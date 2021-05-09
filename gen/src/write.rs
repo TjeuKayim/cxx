@@ -1393,7 +1393,9 @@ fn write_generic_instantiations(out: &mut OutFile) {
             ImplKey::UniquePtr(ident) => write_unique_ptr(out, ident),
             ImplKey::SharedPtr(ident) => write_shared_ptr(out, ident),
             ImplKey::WeakPtr(ident) => write_weak_ptr(out, ident),
-            ImplKey::CxxVector(ident) => write_cxx_vector(out, ident),
+            // TODO: Hack fix to disable CxxVector <https://github.com/dtolnay/cxx/issues/869>
+            // ImplKey::CxxVector(ident) => write_cxx_vector(out, ident),
+            ImplKey::CxxVector(ident) => {},
         }
     }
     out.end_block(Block::ExternC);
